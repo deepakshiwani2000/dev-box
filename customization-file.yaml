@@ -1,0 +1,45 @@
+$schema: "1.0"
+name: "cloud-engineer-definition"
+image: microsoftvisualstudio_windowsplustools_base-win11-gen2
+description: "This definition install and configure the Cloud Engineer / DevOps persona"
+
+customization:
+  - name: EnableClipboardRedirection
+    task: RDPConfiguration
+    parameters:
+	clipboardRedirection: bidirectional
+
+tasks:
+  - name: choco
+    description: Install Terraform 1.9.8
+    parameters:
+      package: terraform
+      url: "https://packages.chocolatey.org/terraform.1.9.8.nupkg"
+
+  - name: choco
+    description: Install OpenJDK
+    parameters:
+      package: openjdk
+      url: "https://packages.chocolatey.org/openjdk.21.0.2.nupkg"
+  
+  - name: choco
+    description: Install Terraform Docs
+    parameters:
+      package: terraform-docs
+      url: "https://packages.chocolatey.org/Terraform-Docs.0.20.0.nupkg"
+      devdir: true
+  
+  - name: install-vscode-extension
+    description: Install Terraform VS Code Extension 
+    parameters:
+      package: HashiCorp.terraform
+  
+  - name: install-vscode-extension
+    description: Install Docker VS Code Extension 
+    parameters:
+      package: ms-azuretools.vscode-docker
+  
+  - name: install-vscode-extension
+    description: Install Remote Development VS Code Extension 
+    parameters:
+      package: ms-vscode-remote.vscode-remote-extensionpack
